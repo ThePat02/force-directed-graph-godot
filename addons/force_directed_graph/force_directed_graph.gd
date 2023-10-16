@@ -22,6 +22,10 @@ var springs: Array[FDGSpring]
 
 
 func _ready():
+	# Connect the child entered and exited signals
+	connect("child_entered_tree", _on_child_entered_tree)
+	connect("child_exiting_tree", _on_child_exiting_tree)
+
 	# Create new node for the graph connections
 	connections.name = "Connections"
 	add_child(connections)
@@ -75,9 +79,13 @@ func update_graph_elements():
 	for child in get_children():
 		if child is FDGNode:
 			nodes.append(child)
-			for other_shild in child.get_children():
-				if other_shild is FDGSpring:
-					springs.append(other_shild)
+			for other_child in child.get_children():
+				if other_child is FDGSpring:
+					# Connect signal if not already connected
+					if not other_child.is_connected("connection_changed", on_connection_changed):
+						other_child.connect("connection_changed", on_connection_changed)
+					
+					springs.append(other_child)
 
 
 ## Updates the connections node with the springs.
@@ -119,5 +127,17 @@ func update_connections():
 		spring.update_line()
 
 
+func on_connection_changed():
+	update_graph_simulation()
+
+
 func _set_update_graph(value: bool):
+	update_graph_simulation()
+
+
+func _on_child_entered_tree(child: Node):
+	update_graph_simulation()
+
+
+func _on_child_exiting_tree(child: Node):
 	update_graph_simulation()
