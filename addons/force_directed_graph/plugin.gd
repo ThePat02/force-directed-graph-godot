@@ -2,11 +2,12 @@
 extends EditorPlugin
 
 
-const icon_control = preload("res://addons/force_directed_graph/Control.svg")
-const icon_force_directed_graph = preload("res://addons/force_directed_graph/ForceDirectedGraph.svg")
-const icon_fdg_node = preload("res://addons/force_directed_graph/FDGNode.svg")
-const icon_fdg_spring = preload("res://addons/force_directed_graph/FDGSpring.svg")
+# Icons
+const icon_force_directed_graph = preload("res://addons/force_directed_graph/icons/ForceDirectedGraph.svg")
+const icon_fdg_node = preload("res://addons/force_directed_graph/icons/FDGNode.svg")
+const icon_fdg_spring = preload("res://addons/force_directed_graph/icons/FDGSpring.svg")
 
+# Nodes
 const force_directed_graph = preload("res://addons/force_directed_graph/force_directed_graph.gd")
 const fdg_node = preload("res://addons/force_directed_graph/fdg_node.gd")
 const fdg_spring = preload("res://addons/force_directed_graph/fdg_spring.gd")

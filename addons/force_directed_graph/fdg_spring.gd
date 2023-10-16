@@ -3,6 +3,7 @@ class_name FDGSpring
 extends Line2D
 
 
+@export var draw_line: bool = true
 @export var length := 500.0
 @export var K := 0.005
 @export var node_start: FDGNode
@@ -34,6 +35,9 @@ func move_nodes():
 func update_line():
 	# Clear the points
 	clear_points()
+
+	if not draw_line:
+		return
 
 	# Add updated points
 	add_point(node_start.position)

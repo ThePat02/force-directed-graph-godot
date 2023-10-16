@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkpuxpowe1c78"
-path="res://.godot/imported/Control.svg-0ffe2e9f8df85e1092b7058e0d9eb947.ctex"
+uid="uid://dydh7pbp8qiqm"
+path="res://.godot/imported/FDGSpring.svg-d00725c6826a91c8f4657d74026d2906.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/force_directed_graph/Control.svg"
-dest_files=["res://.godot/imported/Control.svg-0ffe2e9f8df85e1092b7058e0d9eb947.ctex"]
+source_file="res://addons/force_directed_graph/icons/FDGSpring.svg"
+dest_files=["res://.godot/imported/FDGSpring.svg-d00725c6826a91c8f4657d74026d2906.ctex"]
 
 [params]
 

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://4a16k5un23yg"]
+
+[ext_resource type="Script" path="res://addons/force_directed_graph/fdg_node.gd" id="1_5ljpg"]
+[ext_resource type="Texture2D" uid="uid://124vmpodnhjc" path="res://icon.svg" id="2_brjhi"]
+
+[node name="CustomFDGNode" type="Node2D"]
+script = ExtResource("1_5ljpg")
+radius = 70.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_brjhi")
