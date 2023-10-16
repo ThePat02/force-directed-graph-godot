@@ -14,12 +14,14 @@ const fdg_spring = preload("res://addons/force_directed_graph/fdg_spring.gd")
 
 
 func _enter_tree():
+	# Add custom types
 	add_custom_type("ForceDirectedGraph", "Node2D", force_directed_graph, icon_force_directed_graph)
 	add_custom_type("FDGNode", "Node2D", fdg_node, icon_fdg_node)
 	add_custom_type("FDGSpring", "Node2D", fdg_spring, icon_fdg_spring)
 
 
 func _exit_tree():
+	# Remove custom types
 	remove_custom_type("ForceDirectedGraph")
 	remove_custom_type("FDGNode")
 	remove_custom_type("FDGSpring")

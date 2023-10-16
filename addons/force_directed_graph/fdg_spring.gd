@@ -59,4 +59,6 @@ func _get_configuration_warnings():
 	# Warning if parent is not A ForceDirectedGraph
 	if not (get_parent() is FDGNode):
 		return ["The FDGSpring needs to be a child of a FDGNode"]
+	if node_start == null or node_end == null:
+		return ["The FDGSpring needs to be connected to two FDGNodes"]
 
