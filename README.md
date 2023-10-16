@@ -35,7 +35,7 @@ The connection betweend two `FDGNode` nodes. The `node_start` and `node_end` pro
 
 
 ## Example
-![Example graph](example/example_graph.png)
+![Example graph](example/example_graph.PNG)
 You can find this example graph in the `example` folder of the project. It uses a basic setup of `FDGNode`s and `FDGSpring`s including one custom node (the big Godot Logo).
 
 
