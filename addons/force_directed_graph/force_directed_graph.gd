@@ -29,11 +29,7 @@ func _ready():
 	# Move the connections node to the back
 	move_child(connections, 0)
 
-	# Get all the nodes and springs
-	update_graph_elements()
-
-	# Update the connections
-	update_connections()
+	update_graph_simulation()
 
 
 func _process(_delta):
@@ -60,6 +56,14 @@ func _process(_delta):
 	# Update the node positions
 	for node in nodes:
 		node.update_position()
+
+
+## Updates the nodes and springs arrays.
+func update_graph_simulation():
+	# Update the nodes and springs arrays
+	update_graph_elements()
+	# Update the spring connections
+	update_connections()
 
 
 ## Fills the nodes and springs arrays with the nodes and springs.
@@ -116,5 +120,4 @@ func update_connections():
 
 
 func _set_update_graph(value: bool):
-	update_graph_elements()
-	update_connections()
+	update_graph_simulation()
