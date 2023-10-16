@@ -6,6 +6,8 @@ is a simple implementation of a [Force-Directed Graph](https://en.wikipedia.org/
 - Flexible and easy to use Graph Nodes that can be extended and customized
 - Real-time graph simulation in the editor (optional)
 
+#### Supported Versions
+Every 4.X version of the Godot Engine should work. The plugin was tested with Godot 4.1!
 
 ## What is a Force-Directed Graph?
 > Force-directed graph drawing algorithms are a class of algorithms for drawing graphs in an aesthetically-pleasing way. (Wikipedia)
