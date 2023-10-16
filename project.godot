@@ -10,6 +10,10 @@ config_version=5
 
 [application]
 
-config/name="ForceDirectedGraph-Godot"
+config/name="ForceDirectedGraphGodot"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/force_directed_graph/plugin.cfg")
