@@ -8,6 +8,7 @@ var nodes: Array[FDGNode]
 var springs: Array[FDGSpring]
 
 
+@export var update_graph = false : set = _set_update_graph
 ## Whether the graph is active or not.
 @export var is_active = true
 ## Whether the graph should be simulated in the editor.
@@ -73,6 +74,10 @@ func _process(_delta):
 
 ## Fills the nodes and springs arrays with the nodes and springs.
 func update_graph_elements():
+	# Clear the nodes and springs arrays
+	nodes = []
+	springs = []
+
 	for child in get_children():
 		if child is FDGNode:
 			nodes.append(child)
@@ -81,8 +86,11 @@ func update_graph_elements():
 					springs.append(other_shild)
 
 
+## Updates the connections node with the springs.
 func update_connections():
 	for child in connections.get_children():
+		child.clear_points()
+		connections.remove_child(child)
 		child.queue_free()
 	
 	for spring in springs:
@@ -133,3 +141,8 @@ func create_node(pos: Vector2, radius: float) -> FDGNode:
 	if rng.randf() > debug_connection_chance:
 		create_node(pos + Vector2(rng.randf_range(-radius, radius), rng.randf_range(-radius, radius)), radius)
 	return node
+
+
+func _set_update_graph(value: bool):
+	update_graph_elements()
+	update_connections()
