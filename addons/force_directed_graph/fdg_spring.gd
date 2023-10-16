@@ -3,11 +3,16 @@ class_name FDGSpring
 extends Line2D
 
 
-@export var draw_line: bool = true
+var connection: Line2D
+
+
 @export var length := 500.0
 @export var K := 0.005
 @export var node_start: FDGNode
 @export var node_end: FDGNode
+
+@export_category("Line")
+@export var draw_line: bool = true
 
 
 func _ready():
@@ -22,6 +27,9 @@ func connect_nodes(start, end):
 
 ## Adds force to the connected nodes
 func move_nodes():
+	if node_start == null or node_end == null:
+		return
+
 	var force: Vector2 = node_end.position - node_start.position
 	var magnitude = K * (force.length() - length)
 
@@ -34,17 +42,21 @@ func move_nodes():
 ## Updates the line's position vector points
 func update_line():
 	# Clear the points
-	clear_points()
+	connection.clear_points()
 
 	if not draw_line:
 		return
 
+	if node_start == null or node_end == null:
+		return
+
 	# Add updated points
-	add_point(node_start.position)
-	add_point(node_end.position)
+	connection.add_point(node_start.position)
+	connection.add_point(node_end.position)
 
 
 func _get_configuration_warnings():
 	# Warning if parent is not A ForceDirectedGraph
-	if not (get_parent() is ForceDirectedGraph):
-		return ["The FDGSpring needs to be a child of a ForceDirectedGraph"]
+	if not (get_parent() is FDGNode):
+		return ["The FDGSpring needs to be a child of a FDGNode"]
+
