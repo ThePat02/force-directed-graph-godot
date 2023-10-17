@@ -30,6 +30,12 @@ var acceleration := Vector2(0, 0)
 @export var point_color: Color = Color.WHITE
 
 
+func _ready():
+	# Connect signals
+	connect("child_exiting_tree", _on_child_exiting_tree)
+	connect("child_entered_tree", _on_child_entered_tree)
+
+
 func _draw():
 	if draw_point:
 		draw_circle(Vector2.ZERO, radius, point_color)
@@ -78,6 +84,18 @@ func update_position():
 
 	# Reset acceleration
 	acceleration = Vector2.ZERO
+
+
+func _on_child_exiting_tree(child):
+	var parent := get_parent()
+	if parent.is_node_ready():
+		parent.update_graph_simulation()
+
+
+func _on_child_entered_tree(child):
+	var parent := get_parent()
+	if parent.is_node_ready():
+		parent.update_graph_simulation()
 
 
 func _get_configuration_warnings():

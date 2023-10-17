@@ -82,8 +82,8 @@ func update_graph_elements():
 			for other_child in child.get_children():
 				if other_child is FDGSpring:
 					# Connect signal if not already connected
-					if not other_child.is_connected("connection_changed", on_connection_changed):
-						other_child.connect("connection_changed", on_connection_changed)
+					if not other_child.is_connected("connection_changed", _on_connection_changed):
+						other_child.connect("connection_changed", _on_connection_changed)
 					
 					springs.append(other_child)
 
@@ -127,7 +127,7 @@ func update_connections():
 		spring.update_line()
 
 
-func on_connection_changed():
+func _on_connection_changed():
 	update_graph_simulation()
 
 

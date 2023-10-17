@@ -11,8 +11,8 @@ var connection: Line2D
 
 @export var length := 500.0
 @export var K := 0.005
-@export var node_start: FDGNode : set = connect_node_start
-@export var node_end: FDGNode : set = connect_node_end
+@export var node_start: FDGNode : set = _connect_node_start
+@export var node_end: FDGNode : set = _connect_node_end
 
 @export_category("Line")
 @export var draw_line: bool = true
@@ -58,12 +58,12 @@ func update_line():
 	connection.add_point(node_end.position)
 
 
-func connect_node_start(node):
+func _connect_node_start(node):
 	node_start = node
 	connection_changed.emit()
 
 
-func connect_node_end(node):
+func _connect_node_end(node):
 	node_end = node
 	connection_changed.emit()
 
