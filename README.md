@@ -12,7 +12,27 @@ is a simple implementation of a [Force-Directed Graph](https://en.wikipedia.org/
 
 The graph is a physical simulation of a system of bodies (nodes) connected by springs (edges). The system is simulated by applying forces to the nodes and then updating their positions.
 
-`force-directed-graph-godot` uses an implementation of the method showcased in [this incredible lecture by David Dobervich](https://www.youtube.com/watch?v=PTBuq0CXpWs).
+<p align="center">
+    <img src="addons/force_directed_graph/icons/ForceDirectedGraph.svg">
+    <img src="addons/force_directed_graph/icons/FDGNode.svg">
+    <img src="addons/force_directed_graph/icons/FDGSpring.svg">
+    <img src="addons/force_directed_graph/icons/FDGNode.svg">
+    <img src="addons/force_directed_graph/icons/FDGSpring.svg">
+    <img src="addons/force_directed_graph/icons/FDGNode.svg">
+    <img src="addons/force_directed_graph/icons/FDGSpring.svg">
+    <img src="addons/force_directed_graph/icons/FDGNode.svg">
+    <img src="addons/force_directed_graph/icons/FDGSpring.svg">
+    <img src="addons/force_directed_graph/icons/FDGNode.svg">
+    <img src="addons/force_directed_graph/icons/FDGSpring.svg">
+    <img src="addons/force_directed_graph/icons/FDGNode.svg">
+    <img src="addons/force_directed_graph/icons/FDGSpring.svg">
+    <img src="addons/force_directed_graph/icons/FDGNode.svg">
+    <img src="addons/force_directed_graph/icons/FDGSpring.svg">
+    <img src="addons/force_directed_graph/icons/ForceDirectedGraph.svg">
+</p>
+
+`force-directed-graph-godot` uses an implementation of the method showcased in [this incredible lecture by David Dobervich](https://www.youtube.com/watch?v=PTBuq0CXpWs). You can read a more in-depth explanation of the algorithm the  [
+Handbook of Graph Drawing and Visualization](https://cs.brown.edu/people/rtamassi/gdhandbook/chapters/force-directed.pdf)!
 
 
 ## Usage
@@ -23,7 +43,7 @@ The graph is a physical simulation of a system of bodies (nodes) connected by sp
 4. Connect the `FDGNode` nodes with `FDGSpring` nodes by setting the `node_start` and `node_end` properties of the `FDGSpring` nodes.
 5. After adding new Nodes or Springs, click the `Update Graph` button on the `ForceDirectedGraph` node to update the graph.
 
-> Warning you might have to **reload** your scene after adding new nodes to the graph, if `Update Graph` does not work.
+> Warning: You might have to **reload** your scene after adding new nodes to the graph, if `Update Graph` does not work.
 
 ### Nodes
 ![Alt text](addons/force_directed_graph/icons/ForceDirectedGraph.svg)
@@ -45,6 +65,9 @@ You can find this example graph in the `example` folder of the project. It uses 
 
 
 ## Common questions and problems
+**Q:** Why are there still lines, even if I removed all `FDGSpring` nodes?<br>
+**A:** You might need to reload the scene or use the `update_graph` on the `ForceDirectedGraph` node. 
+
 **Q:** Why are the nodes invisble?<br>
 **A:** `FDGNode`s are empty nodes by default. You can either enable `draw_point` to draw a point with the current radius or add your own sprites/scenes as children.
 
