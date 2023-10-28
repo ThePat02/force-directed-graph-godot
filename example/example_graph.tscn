@@ -9,7 +9,7 @@
 script = ExtResource("1_tdrpy")
 
 [node name="Godot" parent="." instance=ExtResource("2_wtmdk")]
-position = Vector2(661.805, 240.215)
+position = Vector2(542.232, 241.11)
 
 [node name="usesNodes" type="Line2D" parent="Godot" node_paths=PackedStringArray("node_start", "node_end")]
 width = 2.0
@@ -17,13 +17,6 @@ script = ExtResource("2_1nm11")
 length = 250.0
 node_start = NodePath("..")
 node_end = NodePath("../../Nodes")
-
-[node name="usesScenes" type="Line2D" parent="Godot" node_paths=PackedStringArray("node_start", "node_end")]
-width = 2.0
-script = ExtResource("2_1nm11")
-length = 250.0
-node_start = NodePath("..")
-node_end = NodePath("../../Scenes")
 
 [node name="usesScripting" type="Line2D" parent="Godot" node_paths=PackedStringArray("node_start", "node_end")]
 width = 2.0
@@ -46,8 +39,129 @@ length = 150.0
 node_start = NodePath("..")
 node_end = NodePath("../../GDExtension")
 
+[node name="hasForum" type="Line2D" parent="Godot" node_paths=PackedStringArray("node_start", "node_end")]
+width = 2.0
+script = ExtResource("2_1nm11")
+length = 200.0
+node_start = NodePath("..")
+node_end = NodePath("../../GodotForum")
+
+[node name="AssetLib" type="Node2D" parent="."]
+position = Vector2(717.851, 525.087)
+script = ExtResource("4_ia2fk")
+draw_point = true
+point_color = Color(0.2, 0.635294, 0.886275, 1)
+
+[node name="Label" type="Label" parent="AssetLib"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -13.0
+offset_right = 25.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+text = "AssetLib
+"
+
+[node name="canDownloadAddons" type="Line2D" parent="AssetLib" node_paths=PackedStringArray("node_start", "node_end")]
+width = 2.0
+script = ExtResource("2_1nm11")
+length = 300.0
+node_start = NodePath("..")
+node_end = NodePath("../../Addons")
+
+[node name="canDownloadGDExtensions" type="Line2D" parent="AssetLib" node_paths=PackedStringArray("node_start", "node_end")]
+width = 2.0
+script = ExtResource("2_1nm11")
+length = 300.0
+node_start = NodePath("..")
+node_end = NodePath("../../GDExtension")
+
+[node name="GodotForum" type="Node2D" parent="."]
+position = Vector2(706.596, 375.633)
+script = ExtResource("4_ia2fk")
+radius = 40.0
+draw_point = true
+point_color = Color(0.277344, 0.546875, 0.746094, 1)
+
+[node name="Label" type="Label" parent="GodotForum"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -13.0
+offset_right = 25.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+text = "Godot
+Forum"
+
+[node name="GodotDiscord" type="Node2D" parent="."]
+position = Vector2(840.893, 411.443)
+script = ExtResource("4_ia2fk")
+radius = 45.0
+draw_point = true
+point_color = Color(0.341176, 0.337255, 0.74902, 1)
+
+[node name="Label" type="Label" parent="GodotDiscord"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -13.0
+offset_right = 25.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+text = "Godot
+Discord"
+horizontal_alignment = 1
+
+[node name="GodotReddit" type="Node2D" parent="."]
+position = Vector2(883.789, 537.121)
+script = ExtResource("4_ia2fk")
+radius = 30.0
+draw_point = true
+point_color = Color(0.952941, 0.298039, 0.164706, 1)
+
+[node name="Label" type="Label" parent="GodotReddit"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -13.0
+offset_right = 25.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+text = "r/Godot"
+horizontal_alignment = 1
+
 [node name="Scenes" type="Node2D" parent="."]
-position = Vector2(394.909, 205.267)
+position = Vector2(322.228, 199.467)
 script = ExtResource("4_ia2fk")
 radius = 30.0
 draw_point = true
@@ -78,7 +192,7 @@ node_start = NodePath("..")
 node_end = NodePath("../../Nodes")
 
 [node name="Nodes" type="Node2D" parent="."]
-position = Vector2(486.982, 426.809)
+position = Vector2(397.757, 432.651)
 script = ExtResource("4_ia2fk")
 radius = 30.0
 draw_point = true
@@ -104,14 +218,14 @@ metadata/_edit_use_anchors_ = true
 [node name="haveProperties" type="Line2D" parent="Nodes" node_paths=PackedStringArray("node_start", "node_end")]
 width = 2.0
 script = ExtResource("2_1nm11")
-length = 150.0
+length = 100.0
 node_start = NodePath("..")
 node_end = NodePath("../../Properties")
 
 [node name="haveSignals" type="Line2D" parent="Nodes" node_paths=PackedStringArray("node_start", "node_end")]
 width = 2.0
 script = ExtResource("2_1nm11")
-length = 150.0
+length = 100.0
 node_start = NodePath("..")
 node_end = NodePath("../../Signals")
 
@@ -123,7 +237,7 @@ node_start = NodePath("..")
 node_end = NodePath("../../Scripting")
 
 [node name="Properties" type="Node2D" parent="."]
-position = Vector2(338.586, 393.303)
+position = Vector2(297.076, 390.876)
 script = ExtResource("4_ia2fk")
 radius = 20.0
 draw_point = true
@@ -146,7 +260,7 @@ theme_override_constants/outline_size = 10
 text = "Properties"
 
 [node name="Signals" type="Node2D" parent="."]
-position = Vector2(343.785, 469.069)
+position = Vector2(309.464, 460.625)
 script = ExtResource("4_ia2fk")
 radius = 20.0
 draw_point = true
@@ -170,7 +284,7 @@ text = "Signals
 "
 
 [node name="Scripting" type="Node2D" parent="."]
-position = Vector2(626.403, 482.092)
+position = Vector2(539.481, 489.106)
 script = ExtResource("4_ia2fk")
 radius = 30.0
 draw_point = true
@@ -193,8 +307,64 @@ theme_override_constants/outline_size = 10
 text = "Scripting
 "
 
+[node name="canCreateAddons" type="Line2D" parent="Scripting" node_paths=PackedStringArray("node_start", "node_end")]
+position = Vector2(-139.421, -55.283)
+width = 2.0
+script = ExtResource("2_1nm11")
+length = 150.0
+node_start = NodePath("../../Addons")
+node_end = NodePath("..")
+
+[node name="usesGDScript" type="Line2D" parent="Scripting" node_paths=PackedStringArray("node_start", "node_end")]
+position = Vector2(-277.053, -8.71011)
+width = 2.0
+script = ExtResource("2_1nm11")
+length = 100.0
+node_start = NodePath("..")
+node_end = NodePath("../../GDScript")
+
+[node name="usesC#" type="Line2D" parent="Scripting" node_paths=PackedStringArray("node_start", "node_end")]
+position = Vector2(-277.053, -8.71011)
+width = 2.0
+script = ExtResource("2_1nm11")
+length = 100.0
+node_start = NodePath("..")
+node_end = NodePath("../../C#")
+
+[node name="Addons" type="Node2D" parent="."]
+position = Vector2(416.332, 581.857)
+script = ExtResource("4_ia2fk")
+radius = 30.0
+draw_point = true
+
+[node name="Label" type="Label" parent="Addons"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -13.0
+offset_right = 25.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+text = "Addons
+"
+
+[node name="canCreateNodes" type="Line2D" parent="Addons" node_paths=PackedStringArray("node_start", "node_end")]
+position = Vector2(-29.0181, -128.191)
+width = 2.0
+script = ExtResource("2_1nm11")
+length = 150.0
+node_start = NodePath("..")
+node_end = NodePath("../../Nodes")
+
 [node name="GDScript" type="Node2D" parent="."]
-position = Vector2(767.751, 513.036)
+position = Vector2(643.392, 457.995)
 script = ExtResource("4_ia2fk")
 radius = 20.0
 draw_point = true
@@ -217,24 +387,8 @@ theme_override_constants/outline_size = 10
 text = "GDScript
 "
 
-[node name="usesGDScript" type="Line2D" parent="GDScript" node_paths=PackedStringArray("node_start", "node_end")]
-position = Vector2(-418.401, -39.6541)
-width = 2.0
-script = ExtResource("2_1nm11")
-length = 150.0
-node_start = NodePath("../../Scripting")
-node_end = NodePath("..")
-
-[node name="usesC#" type="Line2D" parent="GDScript" node_paths=PackedStringArray("node_start", "node_end")]
-position = Vector2(-418.401, -39.6541)
-width = 2.0
-script = ExtResource("2_1nm11")
-length = 150.0
-node_start = NodePath("../../Scripting")
-node_end = NodePath("../../C#")
-
 [node name="GDExtension" type="Node2D" parent="."]
-position = Vector2(809.731, 302.811)
+position = Vector2(693.639, 228.696)
 script = ExtResource("4_ia2fk")
 radius = 30.0
 draw_point = true
@@ -256,14 +410,6 @@ theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 10
 text = "GDExtension"
 
-[node name="usesC++" type="Line2D" parent="GDExtension" node_paths=PackedStringArray("node_start", "node_end")]
-position = Vector2(-468.074, 273.099)
-width = 2.0
-script = ExtResource("2_1nm11")
-length = 150.0
-node_start = NodePath("..")
-node_end = NodePath("../../C++")
-
 [node name="canModifyNodes" type="Line2D" parent="GDExtension" node_paths=PackedStringArray("node_start", "node_end")]
 position = Vector2(-468.074, 273.099)
 width = 2.0
@@ -272,8 +418,16 @@ length = 350.0
 node_start = NodePath("..")
 node_end = NodePath("../../Nodes")
 
+[node name="usesC++" type="Line2D" parent="GDExtension" node_paths=PackedStringArray("node_start", "node_end")]
+position = Vector2(-468.074, 273.099)
+width = 2.0
+script = ExtResource("2_1nm11")
+length = 100.0
+node_start = NodePath("..")
+node_end = NodePath("../../C++")
+
 [node name="C#" type="Node2D" parent="."]
-position = Vector2(770.463, 443.001)
+position = Vector2(595.064, 406.292)
 script = ExtResource("4_ia2fk")
 radius = 20.0
 draw_point = true
@@ -297,7 +451,7 @@ text = "C#"
 horizontal_alignment = 1
 
 [node name="C++" type="Node2D" parent="."]
-position = Vector2(689.627, 385.088)
+position = Vector2(643.751, 142.121)
 script = ExtResource("4_ia2fk")
 radius = 20.0
 draw_point = true
