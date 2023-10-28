@@ -33,7 +33,7 @@ The graph is a physical simulation of a system of bodies (nodes) connected by sp
     <img src="addons/force_directed_graph/icons/ForceDirectedGraph.svg">
 </p>
 
-`force-directed-graph-godot` uses an implementation of the method showcased in [this incredible lecture by David Dobervich](https://www.youtube.com/watch?v=PTBuq0CXpWs). You can read a more in-depth explanation of the algorithm the  [
+`force-directed-graph-godot` uses an implementation of the method showcased in [this incredible lecture by David Dobervich](https://www.youtube.com/watch?v=PTBuq0CXpWs). You can read a more in-depth explanation of the algorithm in the [
 Handbook of Graph Drawing and Visualization](https://cs.brown.edu/people/rtamassi/gdhandbook/chapters/force-directed.pdf)!
 
 
