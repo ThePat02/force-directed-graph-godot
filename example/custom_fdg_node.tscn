@@ -6,6 +6,7 @@
 [node name="CustomFDGNode" type="Node2D"]
 script = ExtResource("1_5ljpg")
 radius = 70.0
+mass = 4.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_brjhi")

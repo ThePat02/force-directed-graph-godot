@@ -3,13 +3,16 @@ class_name FDGSpring
 extends Line2D
 
 
+signal connection_changed
+
+
 var connection: Line2D
 
 
 @export var length := 500.0
 @export var K := 0.005
-@export var node_start: FDGNode
-@export var node_end: FDGNode
+@export var node_start: FDGNode : set = _connect_node_start
+@export var node_end: FDGNode : set = _connect_node_end
 
 @export_category("Line")
 @export var draw_line: bool = true
@@ -53,6 +56,16 @@ func update_line():
 	# Add updated points
 	connection.add_point(node_start.position)
 	connection.add_point(node_end.position)
+
+
+func _connect_node_start(node):
+	node_start = node
+	connection_changed.emit()
+
+
+func _connect_node_end(node):
+	node_end = node
+	connection_changed.emit()
 
 
 func _get_configuration_warnings():
