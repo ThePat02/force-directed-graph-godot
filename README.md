@@ -4,6 +4,7 @@ is a simple implementation of a [Force-Directed Graph](https://en.wikipedia.org/
 #### Features
 - 2D implementation of a Force-Directed Graph
 - Flexible and easy to use Graph Nodes that can be extended and customized
+- Editor UI for adding new nodes to your graph
 - Real-time graph simulation in the editor (optional)
 
 #### Supported Versions
