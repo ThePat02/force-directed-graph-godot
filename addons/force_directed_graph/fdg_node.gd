@@ -25,9 +25,9 @@ var acceleration := Vector2(0, 0)
 
 @export_category("Visuals")
 ## Whether to draw the node as a point.
-@export var draw_point: bool = false
+@export var draw_point: bool = false : set = _set_draw_point
 ## The color of the point.
-@export var point_color: Color = Color.WHITE
+@export var point_color: Color = Color.WHITE : set = _set_point_color
 
 
 func _ready():
@@ -39,10 +39,6 @@ func _ready():
 func _draw():
 	if draw_point:
 		draw_circle(Vector2.ZERO, radius, point_color)
-
-
-func _process(_delta):
-	queue_redraw()
 
 
 ## Accelerates the node by the given force.
@@ -102,3 +98,13 @@ func _get_configuration_warnings():
 	# Warning if parent is not A ForceDirectedGraph
 	if not (get_parent() is ForceDirectedGraph):
 		return ["The FDGNode needs to be a child of a ForceDirectedGraph"]
+
+
+func _set_draw_point(value: bool):
+	draw_point = value
+	queue_redraw()
+
+
+func _set_point_color(value: Color):
+	point_color = value
+	queue_redraw()
