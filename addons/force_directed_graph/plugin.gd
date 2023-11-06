@@ -39,6 +39,7 @@ func _exit_tree():
 
 	# Remove UI
 	remove_control_from_container(EditorPlugin.CONTAINER_CANVAS_EDITOR_SIDE_LEFT, _graph_ui)
+	_graph_ui.queue_free()
 
 
 func _on_selection_changed() -> void:
