@@ -2,6 +2,9 @@
 extends EditorPlugin
 
 
+var _undo_redo = get_undo_redo()
+
+
 var _graph_ui = preload("res://addons/force_directed_graph/ui/graph_ui.tscn")
 
 
@@ -26,6 +29,7 @@ func _enter_tree():
 	_graph_ui = _graph_ui.instantiate()
 	add_control_to_container(EditorPlugin.CONTAINER_CANVAS_EDITOR_SIDE_LEFT, _graph_ui)
 	_graph_ui.visible = false
+	_graph_ui.undo_redo = _undo_redo
 
 	# Connect editor signals 
 	get_editor_interface().get_selection().selection_changed.connect(_on_selection_changed)
