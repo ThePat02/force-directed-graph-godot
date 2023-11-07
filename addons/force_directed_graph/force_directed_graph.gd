@@ -141,3 +141,12 @@ func _on_child_entered_tree(child: Node):
 
 func _on_child_exiting_tree(child: Node):
 	update_graph_simulation()
+
+
+func _get_configuration_warnings():
+	var warnings: Array = []
+
+	if get_parent() is FDGNode or get_parent() is FDGSpring:
+		warnings.append("The ForceDirectedGraph should not be a child of a FDGNode or FDGSpring.")
+	
+	return warnings
