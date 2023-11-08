@@ -95,9 +95,12 @@ func _on_child_entered_tree(child):
 
 
 func _get_configuration_warnings():
-	# Warning if parent is not A ForceDirectedGraph
+	var warnings: Array = []
+
 	if not (get_parent() is ForceDirectedGraph):
-		return ["The FDGNode needs to be a child of a ForceDirectedGraph"]
+		warnings.append("Node is not a child of a ForceDirectedGraph.")
+	
+	return warnings
 
 
 func _set_draw_point(value: bool):
