@@ -7,6 +7,8 @@ var velocity := Vector2(0, 0)
 var acceleration := Vector2(0, 0)
 
 
+## Whether the node is pinned down. If true, the node will not move.
+@export var pinned_down: bool = false
 ## The radius of the node.
 @export var radius := 50.0
 ## The mass of the node.
@@ -61,6 +63,10 @@ func repulse(other_node: Node) -> void:
 
 ## Updates the position of the node based on its velocity and acceleration.
 func update_position():
+	# Stop if pinned down
+	if pinned_down:
+		return
+
 	# Update velocity
 	velocity += acceleration
 
