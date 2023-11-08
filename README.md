@@ -66,6 +66,9 @@ The connection between two `FDGNode` nodes. The `node_start` and `node_end` prop
 ![Example graph](example/example_graph.PNG)<br>
 You can find this example graph in the `example` folder of the project. It uses a basic setup of `FDGNode`s and `FDGSpring`s including one custom node (the big Godot Logo).
 
+![Example UI](example/example_ui.PNG)<br>
+A simple UI for adding new nodes to the graph is also avaiable. Hover over the buttons to see their shortcuts.
+
 
 ## Common questions and problems
 **Q:** Why are there still lines, even if I removed all `FDGSpring` nodes?<br>
