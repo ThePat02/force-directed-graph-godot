@@ -45,20 +45,26 @@ layout_mode = 2
 [node name="ButtonGraph" type="Button" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+tooltip_text = "Add a new ForceDirectedGraph  to your currently selected node."
 shortcut = SubResource("Shortcut_m2piv")
 text = "Graph"
 icon = ExtResource("1_p4yg8")
+flat = true
 
 [node name="ButtonNode" type="Button" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+tooltip_text = "Add a new FDGNode  to your currently selected node."
 shortcut = SubResource("Shortcut_tdywb")
 text = "Node"
 icon = ExtResource("2_mtvv5")
+flat = true
 
 [node name="ButtonSpring" type="Button" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+tooltip_text = "Add a new FDGSpring  to your currently selected node."
 shortcut = SubResource("Shortcut_6inb6")
 text = "Spring"
 icon = ExtResource("3_7jlyv")
+flat = true
