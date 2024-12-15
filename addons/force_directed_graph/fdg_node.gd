@@ -50,15 +50,16 @@ func accelerate(force: Vector2) -> void:
 
 
 ## Repulses the node from the given node.
-func repulse(other_node: Node) -> void:
+func repulse(other_node: Node) -> float:
 	if position.distance_to(other_node.position) > radius + min_distance:
-		return
+		return 0
 
 	# Calculate force
 	var force := position.direction_to(other_node.position) * repulsion
 
 	# Apply force
 	accelerate(-force)
+	return force.length()
 
 
 ## Updates the position of the node based on its velocity and acceleration.

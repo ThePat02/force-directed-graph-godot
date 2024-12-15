@@ -29,9 +29,9 @@ func connect_nodes(start, end):
 
 
 ## Adds force to the connected nodes
-func move_nodes():
+func move_nodes() -> float:
 	if node_start == null or node_end == null:
-		return
+		return 0
 
 	var force: Vector2 = node_end.position - node_start.position
 	var magnitude = K * (force.length() - length)
@@ -40,6 +40,7 @@ func move_nodes():
 
 	node_start.accelerate(force)
 	node_end.accelerate(-force)
+	return force.length()
 
 
 ## Updates the line's position vector points
@@ -78,4 +79,3 @@ func _get_configuration_warnings():
 		warnings.append("The FDGSpring should have two nodes connected to it")
 	
 	return warnings
-

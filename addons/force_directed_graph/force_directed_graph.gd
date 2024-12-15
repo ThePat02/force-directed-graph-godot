@@ -15,7 +15,12 @@ var springs: Array[FDGSpring]
 @export var is_active = true
 ## Whether the graph should be simulated in the editor.
 @export var simulate_in_editor = true
+## Run every N frames
+@export_range(0, 20) var frame_divide: int = 1
+## Use total applied force to calculate how often to update
+@export var auto_frame_divide: bool = true
 
+var frame_counter = 1
 
 ## The node that contains the spring connections lines.
 @onready var connections = Node2D.new()
@@ -43,15 +48,23 @@ func _process(_delta):
 	if Engine.is_editor_hint() and not simulate_in_editor:
 		return
 	
+	if frame_counter < frame_divide:
+		frame_counter += 1
+		return
+	else:
+		frame_counter = 1
+	
+	var total_force: float = 0
+	
 	# Calculate acceleration depending on the spring connections
 	for spring in springs:
-		spring.move_nodes()
+		total_force += spring.move_nodes()
 
 	# Calculate repulsion between nodes
 	for node in nodes:
 		for other_node in nodes:
 			if node != other_node:
-				node.repulse(other_node)
+				total_force += node.repulse(other_node)
 	
 	# Update the spring lines
 	for spring in springs:
@@ -60,6 +73,9 @@ func _process(_delta):
 	# Update the node positions
 	for node in nodes:
 		node.update_position()
+	
+	if auto_frame_divide:
+		frame_divide = ceil(8 / total_force)
 
 
 ## Updates the nodes and springs arrays.
