@@ -15,12 +15,12 @@ var springs: Array[FDGSpring]
 @export var is_active = true
 ## Whether the graph should be simulated in the editor.
 @export var simulate_in_editor = true
-## Run every N frames
+## Run every N frames. if auto_frame_divide is set, this will be overwritten.
 @export_range(0, 20) var frame_divide: int = 1
-## Use total applied force to calculate how often to update
+## Use total applied force to calculate how often to update. Overwrites frame_divide with the current frame rate division.
 @export var auto_frame_divide: bool = true
 
-var frame_counter = 1
+var frames_since_calculation: int = 1
 
 ## The node that contains the spring connections lines.
 @onready var connections = Node2D.new()
@@ -48,11 +48,11 @@ func _process(_delta):
 	if Engine.is_editor_hint() and not simulate_in_editor:
 		return
 	
-	if frame_counter < frame_divide:
-		frame_counter += 1
+	if frames_since_calculation < frame_divide:
+		frames_since_calculation += 1
 		return
 	else:
-		frame_counter = 1
+		frames_since_calculation = 1
 	
 	var total_force: float = 0
 	

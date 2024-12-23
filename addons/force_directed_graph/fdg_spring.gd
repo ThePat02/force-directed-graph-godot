@@ -28,7 +28,8 @@ func connect_nodes(start, end):
 	node_end = end
 
 
-## Adds force to the connected nodes
+## Adds force to the connected nodes.
+## Returns force length to use for automatic frame rate reduction.
 func move_nodes() -> float:
 	if node_start == null or node_end == null:
 		return 0
