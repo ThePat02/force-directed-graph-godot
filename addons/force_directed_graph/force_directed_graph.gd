@@ -16,14 +16,17 @@ var springs: Array[FDGSpring]
 ## Whether the graph should be simulated in the editor.
 @export var simulate_in_editor = true
 ## Run every N frames. if auto_frame_divide is set, this will be overwritten.
-@export_range(0, 20) var frame_divide: int = 1
+@export_range(0, 500, 1) var frame_divide: int = 1
 ## Use total applied force to calculate how often to update. Overwrites frame_divide with the current frame rate division.
 @export var auto_frame_divide: bool = true
 
-var frames_since_calculation: int = 1
-
 ## The node that contains the spring connections lines.
 @onready var connections = Node2D.new()
+
+var frames_since_calculation: int = 1
+
+## Used to scale up forces to mostly account for lower frame rates
+var frame_divide_force_compenstion: float = 1
 
 
 func _ready():
@@ -41,7 +44,7 @@ func _ready():
 	update_graph_simulation()
 
 
-func _process(_delta):
+func _process(delta: float):
 	if not is_active:
 		return
 
@@ -49,22 +52,27 @@ func _process(_delta):
 		return
 	
 	if frames_since_calculation < frame_divide:
+		# Skipped frame
 		frames_since_calculation += 1
+		# Update force scale with a value that decreases as the previous value gets larger. this prevents weird behavior at very slow update rates
+		frame_divide_force_compenstion += (1 / (1 + 0.2 * (frame_divide_force_compenstion - 1)))
 		return
 	else:
+		# Update frame
 		frames_since_calculation = 1
 	
+	# Total force applied this frame
 	var total_force: float = 0
 	
 	# Calculate acceleration depending on the spring connections
 	for spring in springs:
-		total_force += spring.move_nodes()
+		total_force += spring.move_nodes(frame_divide_force_compenstion)
 
 	# Calculate repulsion between nodes
 	for node in nodes:
 		for other_node in nodes:
 			if node != other_node:
-				total_force += node.repulse(other_node)
+				total_force += node.repulse(other_node, frame_divide_force_compenstion)
 	
 	# Update the spring lines
 	for spring in springs:
@@ -74,9 +82,12 @@ func _process(_delta):
 	for node in nodes:
 		node.update_position()
 	
+	# The more force applied, the quicker the next update frame happens
 	if auto_frame_divide:
-		frame_divide = ceil(8 / total_force)
-
+		frame_divide = min(ceil(8 / total_force), 500)
+	
+	# Reset compensation scale
+	frame_divide_force_compenstion = 1
 
 ## Updates the nodes and springs arrays.
 func update_graph_simulation():

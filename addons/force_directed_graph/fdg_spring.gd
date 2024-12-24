@@ -30,14 +30,15 @@ func connect_nodes(start, end):
 
 ## Adds force to the connected nodes.
 ## Returns force length to use for automatic frame rate reduction.
-func move_nodes() -> float:
+## Takes in frame scale input, which scales up the applies force.
+func move_nodes(frame_scale: int = 1) -> float:
 	if node_start == null or node_end == null:
 		return 0
 
 	var force: Vector2 = node_end.position - node_start.position
 	var magnitude = K * (force.length() - length)
 
-	force = force.normalized() * magnitude
+	force = force.normalized() * magnitude * frame_scale
 
 	node_start.accelerate(force)
 	node_end.accelerate(-force)

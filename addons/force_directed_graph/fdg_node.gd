@@ -51,12 +51,13 @@ func accelerate(force: Vector2) -> void:
 
 ## Repulses the node from the given node.
 ## Returns force length to use for automatic frame rate reduction.
-func repulse(other_node: Node) -> float:
+## Takes in frame scale input, which scales up the applies force.
+func repulse(other_node: Node, frame_scale: int = 1) -> float:
 	if position.distance_to(other_node.position) > radius + min_distance:
 		return 0
 
 	# Calculate force
-	var force := position.direction_to(other_node.position) * repulsion
+	var force := position.direction_to(other_node.position) * repulsion * frame_scale
 
 	# Apply force
 	accelerate(-force)
