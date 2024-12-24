@@ -51,6 +51,17 @@ func _process(delta: float):
 	if Engine.is_editor_hint() and not simulate_in_editor:
 		return
 	
+	# Every 10 frames, check if a node has been moved, by taking the difference of the position delta and the accumulated velocity.
+	# This makes it update quicker if you move a node in the editor or set its position,
+	# especially if it had a very high frame_divide, which would otherwise make it take up to that many frames before any update happens.
+	if frames_since_calculation % 10 == 0:
+		for node in nodes:
+			var move_length = ((node.position - node.last_position) - node.last_applied_movement).length()
+			if move_length > 1:
+				frame_divide *= (0.5 / (1 + 0.01 * move_length))
+			node.last_applied_movement = Vector2.ZERO
+			node.last_position = node.position
+	
 	if frames_since_calculation < frame_divide:
 		# Skipped frame
 		frames_since_calculation += 1

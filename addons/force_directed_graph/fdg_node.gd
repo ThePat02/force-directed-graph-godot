@@ -5,6 +5,10 @@ extends Node2D
 
 var velocity := Vector2(0, 0)
 var acceleration := Vector2(0, 0)
+# Accumulate velocity for external movement checking
+var last_applied_movement := Vector2(0, 0)
+# Set in main FDG script
+var last_position := Vector2(0, 0)
 
 
 ## Whether the node is pinned down. If true, the node will not move.
@@ -89,6 +93,9 @@ func update_position():
 
 	# Reset acceleration
 	acceleration = Vector2.ZERO
+
+	# Set last applied position
+	last_applied_movement += velocity
 
 
 func _on_child_exiting_tree(child):
