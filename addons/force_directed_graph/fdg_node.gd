@@ -5,6 +5,10 @@ extends Node2D
 
 var velocity := Vector2(0, 0)
 var acceleration := Vector2(0, 0)
+# Accumulate velocity for external movement checking
+var last_applied_movement := Vector2(0, 0)
+# Set in main FDG script
+var last_position := Vector2(0, 0)
 
 
 ## Whether the node is pinned down. If true, the node will not move.
@@ -50,15 +54,18 @@ func accelerate(force: Vector2) -> void:
 
 
 ## Repulses the node from the given node.
-func repulse(other_node: Node) -> void:
+## Returns force length to use for automatic frame rate reduction.
+## Takes in frame scale input, which scales up the applies force.
+func repulse(other_node: Node, frame_scale: int = 1) -> float:
 	if position.distance_to(other_node.position) > radius + min_distance:
-		return
+		return 0
 
 	# Calculate force
-	var force := position.direction_to(other_node.position) * repulsion
+	var force := position.direction_to(other_node.position) * repulsion * frame_scale
 
 	# Apply force
 	accelerate(-force)
+	return force.length()
 
 
 ## Updates the position of the node based on its velocity and acceleration.
@@ -86,6 +93,9 @@ func update_position():
 
 	# Reset acceleration
 	acceleration = Vector2.ZERO
+
+	# Set last applied position
+	last_applied_movement += velocity
 
 
 func _on_child_exiting_tree(child):
