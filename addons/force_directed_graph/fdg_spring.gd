@@ -28,21 +28,18 @@ func connect_nodes(start, end):
 	node_end = end
 
 
-## Adds force to the connected nodes.
-## Returns force length to use for automatic frame rate reduction.
-## Takes in frame scale input, which scales up the applies force.
-func move_nodes(frame_scale: int = 1) -> float:
+## Adds force to the connected nodes
+func move_nodes():
 	if node_start == null or node_end == null:
-		return 0
+		return
 
 	var force: Vector2 = node_end.position - node_start.position
 	var magnitude = K * (force.length() - length)
 
-	force = force.normalized() * magnitude * frame_scale
+	force = force.normalized() * magnitude
 
 	node_start.accelerate(force)
 	node_end.accelerate(-force)
-	return force.length()
 
 
 ## Updates the line's position vector points
@@ -81,3 +78,4 @@ func _get_configuration_warnings():
 		warnings.append("The FDGSpring should have two nodes connected to it")
 	
 	return warnings
+
